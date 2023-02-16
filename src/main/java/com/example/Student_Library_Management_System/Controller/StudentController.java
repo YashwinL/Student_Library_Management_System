@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/student")
 public class StudentController {
 
     @Autowired
@@ -15,5 +15,15 @@ public class StudentController {
     @PostMapping("/add")
     public String addStudent(@RequestBody Student student){
        return studentServices.addStudent(student);
+    }
+
+    @GetMapping("/get_NameByEmail")
+    public String getNameByEmail(@RequestParam("email") String email){
+        return studentServices.getNameByEmail(email);
+    }
+
+    @PutMapping("/update_mobno")
+    public String update_mobno(@RequestBody Student student){
+        return studentServices.update_mobno(student);
     }
 }

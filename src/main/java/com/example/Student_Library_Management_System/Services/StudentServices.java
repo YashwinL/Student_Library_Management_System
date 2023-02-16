@@ -26,5 +26,17 @@ public class StudentServices {
         return "Both Student and Card has been Created Successfully";
     }
 
+    public String getNameByEmail(String email)  {
+        Student student = studentRepositories.findByEmail(email);
+        return student.getName();
+    }
+
+    public String update_mobno(Student student){
+        Student student1 = studentRepositories.findById(student.getId()).get();
+        student1.setMobno(student.getMobno());
+        studentRepositories.save(student1);
+        return "Student mobile-no changed successfully";
+    }
+
 
 }

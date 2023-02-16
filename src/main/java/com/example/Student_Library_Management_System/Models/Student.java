@@ -15,7 +15,7 @@ public class Student {
     @Column(unique = true)
     private String email;
 
-    private int MobileNo;
+    private String mobno;
 
     private String country;
 
@@ -26,16 +26,14 @@ public class Student {
         this.card = card;
     }
 
-    public Student() {
-    }
 
-    public Student(int id, String name, String email, int mobileNo, String country) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        MobileNo = mobileNo;
-        this.country = country;
-    }
+//    public Student(int id, String name, String email, String mobileNo, String country) {
+//        this.id = id;
+//        this.name = name;
+//        this.email = email;
+//        this.mobile_no = mobileNo;
+//        this.country = country;
+//    }
 
     public int getId() {
         return id;
@@ -61,12 +59,12 @@ public class Student {
         this.email = email;
     }
 
-    public int getMobileNo() {
-        return MobileNo;
+    public void setMobno(String mobno){
+        this.mobno = mobno;
     }
 
-    public void setMobileNo(int mobileNo) {
-        MobileNo = mobileNo;
+    public String getMobno(){
+        return mobno;
     }
 
     public String getCountry() {

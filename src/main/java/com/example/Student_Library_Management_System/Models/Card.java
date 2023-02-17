@@ -4,7 +4,6 @@ import com.example.Student_Library_Management_System.Enums.CardStatus;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +29,29 @@ public class Card {
     @OneToOne
     @JoinColumn
     private Student studentVariablename;
+
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
+    private  List<Transactions> transactions;
+
+    public Student getStudentVariablename() {
+        return studentVariablename;
+    }
+
+    public List<Transactions> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transactions> transactions) {
+        this.transactions = transactions;
+    }
+
+    public List<Book> getBookIsssued() {
+        return bookIsssued;
+    }
+
+    public void setBookIsssued(List<Book> bookIsssued) {
+        this.bookIsssued = bookIsssued;
+    }
 
     @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
     List<Book> bookIsssued;

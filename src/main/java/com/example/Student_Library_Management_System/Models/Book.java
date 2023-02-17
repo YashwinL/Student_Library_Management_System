@@ -3,6 +3,8 @@ package com.example.Student_Library_Management_System.Models;
 import com.example.Student_Library_Management_System.Enums.Genre;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="book")
 public class Book {
@@ -26,16 +28,39 @@ public class Book {
     @JoinColumn
     private Card card;
 
+    private boolean isIssued;
+
     public Book() {
     }
 
-    public Book(int id, String name, int pages, Genre genre, Author author) {
-        this.id = id;
-        this.name = name;
-        this.pages = pages;
-        this.genre = genre;
-        this.author = author;
+    @OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
+    private List<Transactions> transactionsList;
+
+    public List<Transactions> getTransactionsList() {
+        return transactionsList;
     }
+
+    public void setTransactionsList(List<Transactions> transactionsList) {
+        this.transactionsList = transactionsList;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public boolean isIssued() {
+        return isIssued;
+    }
+
+    public void setIssued(boolean issued) {
+        isIssued = issued;
+    }
+
+
 
     public int getId() {
         return id;
